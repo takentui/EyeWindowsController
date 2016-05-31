@@ -1,0 +1,175 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using gma.System.Windows;
+using System.Runtime.InteropServices;
+
+
+namespace EyeWindowsController
+{
+    public partial class Form1 : Form
+    { 
+        UserActivityHook actHook;
+        CustomCursorForm mouse_form;
+        int timing;
+        CustomMouse _CM;
+        Timer _timer, _progress_timer;
+        public string MOUSEEVENTACTION;
+        ControlPanelForm _controlsForm;
+        public Form1()
+        {
+            TopMost = true;
+            _CM = new CustomMouse();
+            _controlsForm = new ControlPanelForm();
+            _controlsForm.Owner = this;
+            _controlsForm.setOwner();
+            _timer = new Timer();
+            _progress_timer = new Timer();
+            _progress_timer.Interval = 100;
+            _progress_timer.Tick += PrintProgress;
+            _progress_timer.Enabled = true;
+            InitializeComponent();
+            mouse_form = new CustomCursorForm();
+            mouse_form.Owner = this;
+            mouse_form.Show();
+        }
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern bool SetCursorPos(int X, int Y);
+
+        public void MouseMoved(object sender, MouseEventArgs e)
+        {
+            Point tempPoint = new Point(e.X - 10, e.Y + 10);
+            mouse_form.DesktopLocation = tempPoint;
+            if (_CM.MouseMoved(e.X, e.Y))
+            {
+                refreshEventHandlers();
+                //LogWrite("Мышь сдвинулась далеко");
+            }
+            if (e.Y > SystemInformation.PrimaryMonitorSize.Height - 300)
+            {
+                _controlsForm.Show();
+                startMouseTimer();
+            }
+            label1.Text = String.Format("x={0}  y={1} wheel={2}", e.X, e.Y, e.Delta);
+            if (e.Clicks > 0) LogWrite("MouseButton     - " + e.Button.ToString());
+            SetCursorPos(e.X, e.Y);
+        }
+ 
+        public void MyKeyDown(object sender, KeyEventArgs e)
+        {
+            LogWrite("KeyDown   - " + e.KeyData.ToString());
+        }
+        enum MouseEvent
+        {
+            MOUSEEVENTF_LEFTDOWN = 0x02,
+            MOUSEEVENTF_LEFTUP = 0x04,
+            MOUSEEVENTF_RIGHTDOWN = 0x08,
+            MOUSEEVENTF_RIGHTUP = 0x10,
+        }
+        public void MyKeyPress(object sender, KeyPressEventArgs e)
+        {
+            LogWrite("KeyPress  - " + e.KeyChar);
+            if ( (Keys)e.KeyChar == Keys.Space)
+            {
+                mouse_event((int)MouseEvent.MOUSEEVENTF_LEFTDOWN, 500, 600, 0, 0);
+                mouse_event((int)MouseEvent.MOUSEEVENTF_LEFTUP, 500, 600, 0, 0);
+            }
+        }
+ 
+        public void MyKeyUp(object sender, KeyEventArgs e)
+        {
+            LogWrite("KeyUp         - " + e.KeyData.ToString());
+        }
+ 
+        private void LogWrite(string txt)
+        {
+            logger_tb.AppendText(txt + Environment.NewLine);
+            logger_tb.SelectionStart = logger_tb.Text.Length;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            actHook = new UserActivityHook(); // crate an instance with global hooks
+            // hang on events
+            actHook.OnMouseActivity += new MouseEventHandler(MouseMoved);
+            actHook.KeyDown += new KeyEventHandler(MyKeyDown);
+            actHook.KeyPress += new KeyPressEventHandler(MyKeyPress);
+            actHook.KeyUp += new KeyEventHandler(MyKeyUp);
+
+            actHook.Start();
+        }
+
+        private void DoClick(object sender, EventArgs e)
+        {
+            _CM.DoClick();
+            refreshEventHandlers();
+        }
+
+        private void DoDBLClick(object sender, EventArgs e)
+        {
+            _CM.DoDBLClick();
+            refreshEventHandlers();
+        }
+
+        private void PrintProgress(object sender, EventArgs e)
+        {
+            mouse_form.PrintProgress();
+        }
+
+        public void refreshEventHandlers()
+        {
+            mouse_form.ClearProgress();
+            _progress_timer.Stop();
+            if (_timer != null)
+            {
+                _timer.Stop();
+                _timer.Tick -= DoClick;
+                _timer.Tick -= DoDBLClick;
+            }
+            _timer = null;
+        }
+
+        public void startMouseTimer()
+        {
+
+            if (_timer != null)
+            {
+                LogWrite("Запуск таймеров в главной форме c событием " + MOUSEEVENTACTION);
+                _timer = new Timer();
+                _timer.Interval = 1000;
+                switch (MOUSEEVENTACTION)
+                {
+                    case "LeftClick":
+                        {
+                            _timer.Tick += DoClick;
+                        }
+                        break;
+                    case "DBLLeftClick":
+                        {
+                            _timer.Tick += DoDBLClick;
+                        }
+                        break;
+                }
+                _timer.Enabled = true;
+
+                _timer.Start();
+                mouse_form.ClearProgress();
+                _progress_timer.Start();
+            }
+            
+        }
+
+        public void printControlsForm()
+        {
+            
+        }
+    }
+}

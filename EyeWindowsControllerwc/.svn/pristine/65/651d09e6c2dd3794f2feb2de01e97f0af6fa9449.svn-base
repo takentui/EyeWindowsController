@@ -1,0 +1,101 @@
+﻿namespace EyeWindowsController
+{
+    partial class ControlPanelForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.leftMouseClickBTN = new System.Windows.Forms.Button();
+            this.DblLeftMouseClickBTN = new System.Windows.Forms.Button();
+            this.RightMouseClickBTN = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // leftMouseClickBTN
+            // 
+            this.leftMouseClickBTN.Location = new System.Drawing.Point(12, 9);
+            this.leftMouseClickBTN.Name = "leftMouseClickBTN";
+            this.leftMouseClickBTN.Size = new System.Drawing.Size(181, 139);
+            this.leftMouseClickBTN.TabIndex = 0;
+            this.leftMouseClickBTN.Text = "Левый клик";
+            this.leftMouseClickBTN.UseVisualStyleBackColor = true;
+            this.leftMouseClickBTN.Click += new System.EventHandler(this.leftMouseClickBTN_Click);
+            this.leftMouseClickBTN.MouseEnter += new System.EventHandler(this.leftMouseClickBTN_MouseEnter);
+            this.leftMouseClickBTN.MouseLeave += new System.EventHandler(this.leftMouseClickBTN_MouseLeave);
+            // 
+            // DblLeftMouseClickBTN
+            // 
+            this.DblLeftMouseClickBTN.Location = new System.Drawing.Point(214, 9);
+            this.DblLeftMouseClickBTN.Name = "DblLeftMouseClickBTN";
+            this.DblLeftMouseClickBTN.Size = new System.Drawing.Size(181, 139);
+            this.DblLeftMouseClickBTN.TabIndex = 1;
+            this.DblLeftMouseClickBTN.Text = "Двойной Левый клик";
+            this.DblLeftMouseClickBTN.UseVisualStyleBackColor = true;
+            this.DblLeftMouseClickBTN.Click += new System.EventHandler(this.DblLeftMouseClickBTN_Click);
+            this.DblLeftMouseClickBTN.MouseEnter += new System.EventHandler(this.DblLeftMouseClickBTN_MouseEnter);
+            this.DblLeftMouseClickBTN.MouseLeave += new System.EventHandler(this.DblLeftMouseClickBTN_MouseLeave);
+            // 
+            // RightMouseClickBTN
+            // 
+            this.RightMouseClickBTN.Location = new System.Drawing.Point(416, 9);
+            this.RightMouseClickBTN.Name = "RightMouseClickBTN";
+            this.RightMouseClickBTN.Size = new System.Drawing.Size(181, 139);
+            this.RightMouseClickBTN.TabIndex = 1;
+            this.RightMouseClickBTN.Text = "Правый клик";
+            this.RightMouseClickBTN.UseVisualStyleBackColor = true;
+            this.RightMouseClickBTN.Click += new System.EventHandler(this.RightMouseClickBTN_Click);
+            this.RightMouseClickBTN.MouseEnter += new System.EventHandler(this.DblLeftMouseClickBTN_MouseEnter);
+            this.RightMouseClickBTN.MouseLeave += new System.EventHandler(this.DblLeftMouseClickBTN_MouseLeave);
+            // 
+            // ControlPanelForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::EyeWindowsController.Properties.Resources.bg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(984, 160);
+            this.Controls.Add(this.RightMouseClickBTN);
+            this.Controls.Add(this.DblLeftMouseClickBTN);
+            this.Controls.Add(this.leftMouseClickBTN);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Location = new System.Drawing.Point(200, 880);
+            this.Name = "ControlPanelForm";
+            this.Opacity = 0.7D;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "ControlPanelForm";
+            this.TopMost = true;
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button leftMouseClickBTN;
+        private System.Windows.Forms.Button DblLeftMouseClickBTN;
+        private System.Windows.Forms.Button RightMouseClickBTN;
+    }
+}

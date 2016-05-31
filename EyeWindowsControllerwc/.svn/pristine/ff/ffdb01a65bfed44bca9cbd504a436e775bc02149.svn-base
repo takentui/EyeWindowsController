@@ -1,0 +1,84 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace EyeWindowsController
+{
+    public partial class ControlPanelForm : Form
+    {
+        public bool IsShowed = false;
+        public ControlPanelForm()
+        {
+            InitializeComponent();
+        }
+        Form1 main;
+        Timer _timer;
+        bool ActionIsSelected;
+
+        public void setOwner()
+        {
+            main = (Form1)this.Owner as Form1;
+        }
+        private void leftMouseClickBTN_MouseEnter(object sender, EventArgs e)
+        {
+            SetClick();
+        }
+
+        public void refreshTimer()
+        {
+            if (!ActionIsSelected)
+            {
+                main.MOUSEEVENTACTION = "";
+                main.setActionEnded(null, null);
+            }
+        }
+
+        private void DblLeftMouseClickBTN_MouseEnter(object sender, EventArgs e)
+        {
+            SetClick();
+        }
+
+        private void DblLeftMouseClickBTN_MouseLeave(object sender, EventArgs e)
+        {
+            refreshTimer();
+        }
+
+        private void leftMouseClickBTN_MouseLeave(object sender, EventArgs e)
+        {
+            refreshTimer();
+        }
+
+        private void SetClick()
+        {
+            main.MOUSEEVENTACTION = "LeftClick";
+            main.startMouseTimer();
+            ActionIsSelected = false;
+        }
+
+        private void leftMouseClickBTN_Click(object sender, EventArgs e)
+        {
+            ActionIsSelected = true;
+            main.MOUSEEVENTACTION = "LeftClick";
+            main.startMouseTimer();
+        }
+
+        private void DblLeftMouseClickBTN_Click(object sender, EventArgs e)
+        {
+            ActionIsSelected = true;
+            main.MOUSEEVENTACTION = "DBLLeftClick";
+            main.startMouseTimer();
+        }
+
+        private void RightMouseClickBTN_Click(object sender, EventArgs e)
+        {
+            ActionIsSelected = true;
+            main.MOUSEEVENTACTION = "RightClick";
+            main.startMouseTimer();
+        }
+    }
+}

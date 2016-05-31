@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Runtime.InteropServices;
+
+namespace EyeWindowsController
+{
+    class CustomMouse
+    {
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern bool SetCursorPos(int X, int Y);
+        
+        enum MouseEvent
+        {
+            MOUSEEVENTF_LEFTDOWN = 0x02,
+            MOUSEEVENTF_LEFTUP = 0x04,
+            MOUSEEVENTF_RIGHTDOWN = 0x08,
+            MOUSEEVENTF_RIGHTUP = 0x10,
+        }
+
+        private int _x;
+        private int _y;
+        public int Radius;
+
+        public CustomMouse()
+        {
+            Radius = 10;
+        }
+        public bool MouseMoved(int newX, int newY)
+        {
+            if (Math.Abs(_x - newX) > Radius || Math.Abs(_y - newY) > Radius)
+            {
+                SetPosition(newX, newY);
+                return true;
+            }
+            return false;
+        }
+
+        private void SetPosition(int x, int y)
+        {
+            _x = x;
+            _y = y;
+        }
+
+        public void DoClick()
+        {
+            SetCursorPos(_x, _y);
+            mouse_event((int)MouseEvent.MOUSEEVENTF_LEFTDOWN, 500, 600, 0, 0);
+            mouse_event((int)MouseEvent.MOUSEEVENTF_LEFTUP, 500, 600, 0, 0);
+        }
+        public void DoClick(int x, int y)
+        {
+            SetPosition(x, y);
+            DoClick();
+        }
+    }
+}
