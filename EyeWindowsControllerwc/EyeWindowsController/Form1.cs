@@ -27,6 +27,7 @@ namespace EyeWindowsController
         public Form1()
         {
             TopMost = true;
+            this.Hide();
             _CM = new CustomMouse();
             _controlsForm = new ControlPanelForm();
             _controlsForm.Owner = this;
@@ -112,7 +113,6 @@ namespace EyeWindowsController
                     LogWrite("Скрываем форму ");
                 }
             }
-            label1.Text = String.Format("x={0}  y={1}", x, y);
         }
 
         public void MyKeyDown(object sender, KeyEventArgs e)
@@ -277,6 +277,11 @@ namespace EyeWindowsController
         public void printControlsForm()
         {
             
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -95,6 +95,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(262, 21);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // StartSettingButton
             // 
@@ -461,6 +462,8 @@
             // chkBoxSettingsMode
             // 
             this.chkBoxSettingsMode.AutoSize = true;
+            this.chkBoxSettingsMode.Checked = true;
+            this.chkBoxSettingsMode.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxSettingsMode.Location = new System.Drawing.Point(342, 312);
             this.chkBoxSettingsMode.Name = "chkBoxSettingsMode";
             this.chkBoxSettingsMode.Size = new System.Drawing.Size(117, 17);
@@ -500,7 +503,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "VideoController";
-            this.Text = "Form1";
+            this.Text = "VideoController";
             this.Load += new System.EventHandler(this.VideoController_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

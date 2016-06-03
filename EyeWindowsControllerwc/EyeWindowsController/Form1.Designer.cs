@@ -29,37 +29,41 @@
         private void InitializeComponent()
         {
             this.logger_tb = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.videoTranslator = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.videoTranslator)).BeginInit();
             this.SuspendLayout();
             // 
             // logger_tb
             // 
-            this.logger_tb.Location = new System.Drawing.Point(22, 25);
+            this.logger_tb.Location = new System.Drawing.Point(7, 7);
             this.logger_tb.Multiline = true;
             this.logger_tb.Name = "logger_tb";
             this.logger_tb.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.logger_tb.Size = new System.Drawing.Size(628, 223);
+            this.logger_tb.Size = new System.Drawing.Size(357, 238);
             this.logger_tb.TabIndex = 0;
             // 
-            // label1
+            // videoTranslator
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 284);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.videoTranslator.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.videoTranslator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.videoTranslator.Location = new System.Drawing.Point(370, 7);
+            this.videoTranslator.Name = "videoTranslator";
+            this.videoTranslator.Size = new System.Drawing.Size(320, 240);
+            this.videoTranslator.TabIndex = 5;
+            this.videoTranslator.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(679, 345);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(694, 252);
+            this.Controls.Add(this.videoTranslator);
             this.Controls.Add(this.logger_tb);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.videoTranslator)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -68,7 +72,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox logger_tb;
-        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.PictureBox videoTranslator;
     }
 }
 

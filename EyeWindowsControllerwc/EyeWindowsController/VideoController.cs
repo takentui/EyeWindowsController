@@ -62,7 +62,10 @@ namespace EyeWindowsController
 
         private void StartTracking()
         {
+            if ( Finalvideo != null )
+                Finalvideo.Stop();
             Finalvideo = new VideoCaptureDevice(VideoCapTureDevices[comboBox1.SelectedIndex].MonikerString);
+            Finalvideo.NewFrame -= Finalvideo_NewFrame;
             Finalvideo.NewFrame += new NewFrameEventHandler(Finalvideo_NewFrame);
             Finalvideo.DesiredFrameRate = 20;// FPS
             Finalvideo.DesiredFrameSize = new Size(320, 240);
@@ -154,12 +157,14 @@ namespace EyeWindowsController
             UnmanagedImage grayImage = grayscaleFilter.Apply(new UnmanagedImage(objectsData));
             // unlock image
             image.UnlockBits(objectsData);
-
+            Bitmap newClone = new Bitmap(image);
+            //newClone = (Bitmap)image.Clone();
 
             blobCounter.ProcessImage(image);
             Rectangle[] rects = blobCounter.GetObjectsRectangles();
             Blob[] blobs = blobCounter.GetObjectsInformation();
             pictureBox2.Image = image;
+            owner_form.videoTranslator.Image = newClone;
 
             if (!chkBoxSettingsMode.Checked)
             {
@@ -301,6 +306,11 @@ namespace EyeWindowsController
             {
                 fs.Close();
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StartTracking();
         }
 
     }
