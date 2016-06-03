@@ -98,6 +98,7 @@
             this.move_btn.UseVisualStyleBackColor = true;
             this.move_btn.Click += new System.EventHandler(this.move_btn_Click);
             this.move_btn.MouseEnter += new System.EventHandler(this.DblLeftMouseClickBTN_MouseEnter);
+            this.move_btn.MouseLeave += new System.EventHandler(this.move_btn_MouseLeave);
             // 
             // ControlPanelForm
             // 
@@ -106,7 +107,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::EyeWindowsController.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(795, 160);
+            this.ClientSize = new System.Drawing.Size(795, 111);
             this.Controls.Add(this.move_btn);
             this.Controls.Add(this.keyboard_btn);
             this.Controls.Add(this.RightMouseClickBTN);

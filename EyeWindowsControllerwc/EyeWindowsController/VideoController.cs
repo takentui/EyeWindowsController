@@ -56,7 +56,7 @@ namespace EyeWindowsController
             catch (Exception exce)
             {
             }
-            H = ScreenHeight / pictureBox1.Height;
+            H = ScreenHeight / pictureBox1.Height + 3;
             W = ScreenWidth / pictureBox1.Width;
         }
 

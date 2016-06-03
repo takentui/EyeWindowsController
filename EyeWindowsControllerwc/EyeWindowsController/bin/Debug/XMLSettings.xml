@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ControllerSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <CheckSettings>HandSet</CheckSettings>
-  <Red>253</Red>
+  <Red>85</Red>
   <Green>22</Green>
-  <Blue>17</Blue>
+  <Blue>220</Blue>
 </ControllerSettings>
