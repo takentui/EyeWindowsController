@@ -147,9 +147,6 @@ namespace EyeWindowsController
             blobCounter.MinHeight = 5;
             blobCounter.FilterBlobs = true;
             blobCounter.ObjectsOrder = ObjectsOrder.Size;
-            //Grayscale griFiltre = new Grayscale(0.2125, 0.7154, 0.0721);
-            //Grayscale griFiltre = new Grayscale(0.2, 0.2, 0.2);
-            //Bitmap griImage = griFiltre.Apply(image);
 
             BitmapData objectsData = image.LockBits(new Rectangle(0, 0, image.Width, image.Height), ImageLockMode.ReadOnly, image.PixelFormat);
             // grayscaling
@@ -158,7 +155,6 @@ namespace EyeWindowsController
             // unlock image
             image.UnlockBits(objectsData);
             Bitmap newClone = new Bitmap(image);
-            //newClone = (Bitmap)image.Clone();
 
             blobCounter.ProcessImage(image);
             Rectangle[] rects = blobCounter.GetObjectsRectangles();
@@ -168,7 +164,6 @@ namespace EyeWindowsController
 
             if (!chkBoxSettingsMode.Checked)
             {
-                
                 //Трекинг за одним объектом
                 foreach (Rectangle recs in rects)
                 {
