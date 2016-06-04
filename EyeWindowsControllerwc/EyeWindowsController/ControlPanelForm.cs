@@ -31,13 +31,13 @@ namespace EyeWindowsController
             this.TransparencyKey = this.BackColor;//он же будет заменен на прозрачный цвет
 
         }
-        Form1 main;
+        MainFormControl main;
         Timer _timer;
         bool ActionIsSelected;
 
         public void setOwner()
         {
-            main = (Form1)this.Owner as Form1;
+            main = (MainFormControl)this.Owner as MainFormControl;
         }
         private void leftMouseClickBTN_MouseEnter(object sender, EventArgs e)
         {

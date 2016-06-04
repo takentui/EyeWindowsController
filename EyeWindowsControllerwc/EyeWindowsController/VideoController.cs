@@ -23,7 +23,7 @@ namespace EyeWindowsController
         private FilterInfoCollection VideoCapTureDevices;
         private VideoCaptureDevice Finalvideo;
         private ControllerSettings settings;
-        Form1 owner_form;
+        MainFormControl owner_form;
         int ScreenWidth = SystemInformation.PrimaryMonitorSize.Width;
         int ScreenHeight = SystemInformation.PrimaryMonitorSize.Height;
 
@@ -49,7 +49,7 @@ namespace EyeWindowsController
             comboBox1.SelectedIndex = 0;
             try
             {
-                owner_form = (Form1)this.Owner as Form1;
+                owner_form = (MainFormControl)this.Owner as MainFormControl;
                 deserializeSettings();
                 StartTracking();
             }

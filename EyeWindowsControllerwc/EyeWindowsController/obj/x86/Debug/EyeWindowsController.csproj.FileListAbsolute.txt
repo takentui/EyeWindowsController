@@ -59,9 +59,9 @@ C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsContr
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.csprojResolveAssemblyReference.cache
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.ControlPanelForm.resources
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.CustomCursorForm.resources
-C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.Form1.resources
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.Properties.Resources.resources
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.VideoController.resources
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.csproj.GenerateResource.Cache
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.exe
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.pdb
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.MainFormControl.resources

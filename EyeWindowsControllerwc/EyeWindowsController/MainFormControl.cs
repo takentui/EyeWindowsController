@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace EyeWindowsController
 {
-    public partial class Form1 : Form
+    public partial class MainFormControl : Form
     {
         public int timeInterval {set {} get { return 3000;} }
         UserActivityHook actHook;
@@ -24,7 +24,7 @@ namespace EyeWindowsController
         ControlPanelForm _controlsForm;
         bool ActionIsEnd; //Действие совершено
         VideoController VCForm;
-        public Form1()
+        public MainFormControl()
         {
             TopMost = true;
             this.Hide();
@@ -53,35 +53,7 @@ namespace EyeWindowsController
 
         public void MouseMoved(object sender, MouseEventArgs e)
         {
-            //Point tempPoint = new Point(e.X, e.Y + 15);
-            //mouse_form.DesktopLocation = tempPoint;
-            //if (_CM.MouseMoved(e.X, e.Y))
-            //{
-            //    refreshEventHandlers();
-            //   // LogWrite("Обновили таймеры");
-            //}
-            //if (e.Y < _controlsForm.Height && e.X > (SystemInformation.PrimaryMonitorSize.Width - _controlsForm.Width) / 2 && e.X < (SystemInformation.PrimaryMonitorSize.Width + _controlsForm.Width) / 2)
-            //{
-            //    if (!_controlsForm.IsShowed)
-            //    {
-            //        _controlsForm.Show();
-            //        mouse_form.Show();
-            //        _controlsForm.IsShowed = true;
-            //        LogWrite("Показываем форму ");
-            //    }
-            //}
-            //else
-            //{
-            //    if (_controlsForm.IsShowed)
-            //    {
-            //        _controlsForm.Hide();
-            //        _controlsForm.IsShowed = false;
-            //        LogWrite("Скрываем форму ");
-            //    }
-            //}
-            //label1.Text = String.Format("x={0}  y={1} wheel={2}", e.X, e.Y, e.Delta);
-            //if (e.Clicks > 0) LogWrite("MouseButton     - " + e.Button.ToString());
-            //SetCursorPos(e.X, e.Y);
+           
         }
 
         public void setMouseCoordinates(int x, int y)
@@ -142,7 +114,7 @@ namespace EyeWindowsController
             logger_tb.SelectionStart = logger_tb.Text.Length;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainFormControl_Load(object sender, EventArgs e)
         {
             actHook = new UserActivityHook(); // crate an instance with global hooks
             // hang on events
@@ -279,7 +251,7 @@ namespace EyeWindowsController
             
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void MainFormControl_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }

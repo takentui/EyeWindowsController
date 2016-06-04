@@ -1,6 +1,6 @@
 ﻿namespace EyeWindowsController
 {
-    partial class Form1
+    partial class MainFormControl
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -52,17 +52,17 @@
             this.videoTranslator.TabIndex = 5;
             this.videoTranslator.TabStop = false;
             // 
-            // Form1
+            // MainFormControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 252);
             this.Controls.Add(this.videoTranslator);
             this.Controls.Add(this.logger_tb);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "MainFormControl";
+            this.Text = "Главная форма";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormControl_FormClosed);
+            this.Load += new System.EventHandler(this.MainFormControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.videoTranslator)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
