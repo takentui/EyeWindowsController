@@ -65,3 +65,6 @@ C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsContr
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.exe
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.pdb
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Debug\EyeWindowsController.MainFormControl.resources
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\bin\Debug\Emgu.CV.xml
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\bin\Debug\Emgu.Util.xml
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeWindowsControllerwc\EyeWindowsController\bin\Debug\Emgu.CV.UI.xml

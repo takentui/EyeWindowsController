@@ -33,7 +33,7 @@ namespace EyeWindowsController
             InitializeComponent();
         }
 
-        int R; //Trackbarın değişkeneleri
+        int R; 
         int G;
         int B;
 
