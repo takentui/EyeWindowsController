@@ -31,7 +31,7 @@ namespace EyeTrackerProject
         List<PictureBox> pictures = new List<System.Windows.Forms.PictureBox>();
         MathModule coords;
         MainFormControl owner_form;
-        IntPtr corners;
+        PointF[][] corners;
         public Form1()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace EyeTrackerProject
                 pictures[i].TabStop = false;
                 this.Controls.Add(pictures[i]);
             }
-            coords = new MathModule(SystemInformation.PrimaryMonitorSize.Width / 100, SystemInformation.PrimaryMonitorSize.Height / 100);
+            coords = new MathModule(SystemInformation.PrimaryMonitorSize.Width * 41 / (800 * 30), SystemInformation.PrimaryMonitorSize.Height);
             //Каскад хаара
             eye = new HaarCascade("haarcascade_mcs_eyepair_big.xml");
             //Камера
@@ -69,7 +69,7 @@ namespace EyeTrackerProject
             ExtractBiggestBlob fil2;
             
             //Get the current frame form capture device
-            currentFrame = grabber.QueryFrame().Resize(640, 480, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            currentFrame = grabber.QueryFrame().Resize(800, 600, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
 
             //Convert it to Grayscale
             gray = currentFrame.Convert<Gray, Byte>();
@@ -157,12 +157,11 @@ namespace EyeTrackerProject
                     Image<Bgr, Byte> imgOriginal = new Image<Bgr, byte>(kek123);
                     Image<Gray, Byte> imgProcessed = (new Image<Gray, Byte>(kek123));
 
-                    //imgProcessed = imgOriginal.InRange(new Bgr(0, 0, 175), new Bgr(100, 100, 256));
+                    
+                    imgProcessed = imgProcessed.SmoothGaussian(9);
+                    //imgProcessed = imgProcessed.InRange(new Gray(0), new Gray(70));
 
-                    //imgProcessed = imgProcessed.SmoothGaussian(25);
-
-                    CircleF[] circles = imgProcessed.HoughCircles(new Gray(70), new Gray(20), 1.5, imgProcessed.Height / 2, 1, 10)[0];
-
+                    CircleF[] circles = imgProcessed.HoughCircles(new Gray(70), new Gray(20), 1.5, imgProcessed.Height, 3, 12)[0];
                     foreach (CircleF circle in circles)
                     {
                         CvInvoke.cvCircle(imgOriginal, new System.Drawing.Point((int)circle.Center.X, (int)circle.Center.Y), 3, new MCvScalar(0, 255, 0), -1, LINE_TYPE.CV_AA, 0);
@@ -184,27 +183,55 @@ namespace EyeTrackerProject
                         if (textBox1.Text != "") textBox1.AppendText(Environment.NewLine);
                         textBox1.AppendText("x =" + coords.getX() + ", y =" + coords.getY());
                         textBox1.ScrollToCaret();
-
+                        break;
                     }
                     try
                     {
-                        int cornerCount = 1;
-                        CvInvoke.cvGoodFeaturesToTrack(imgOriginal, imgProcessed, imgProcessed, corners, ref cornerCount, 0.5, imgOriginal.Width, new IntPtr(), 3, 0, 0.04);
-                        textBox1.AppendText("угол _ x =" + corners.ToString());
+                        int cornerCount = 2;
+                        corners = setCornerRoi(imgOriginal, index.Equals(0)).GoodFeaturesToTrack(3, 0.8, imgOriginal.Width, 3);
+                        
+                        if (index.Equals(0))
+                        {
+                            coords.setLeftCorner(corners[0][0].X, corners[0][0].Y);
+                            owner_form.left_eye.Image = imgOriginal.ToBitmap();
+                        }
+                        else
+                        {
+                            coords.setRightCorner(corners[0][0].X, corners[0][0].Y);
+                            owner_form.right_eye.Image = imgOriginal.ToBitmap();
+                        }
                         owner_form.setMouseCoordinates(coords.getX(), coords.getY());
-                        owner_form.left_eye.Image = imgOriginal.ToBitmap();
                     }
                     catch (Exception except)
                     {
                         owner_form.logger_tb.Text = except.Message;
                     }
-                    pictures[index * 4 + 3].Image = imgOriginal.ToBitmap();// Принт изображения
-                    
-
+                    pictures[index * 4 + 3].Image = imgProcessed.ToBitmap(); //imgOriginal.ToBitmap();// Принт изображения
                 }
             }
         }
-        
+
+        private Emgu.CV.Image<Emgu.CV.Structure.Bgr, byte> setCornerRoi(Emgu.CV.Image<Emgu.CV.Structure.Bgr, byte>  imgOriginal, bool left)
+        {
+            Emgu.CV.Image<Emgu.CV.Structure.Bgr, byte> img = imgOriginal.Clone();
+            int x, y, width, height;
+            if (left)
+            {
+                x = (int)(img.Width * 0.2);
+                y = (int) (img.Height * 0.3);
+            }
+            else
+            {
+                x = (int)(img.Width * 0.4);
+                y = (int)(img.Height * 0.3);
+            }
+            width = (int)(img.Width * 0.4);
+            height = (int)(img.Height * 0.5);
+            img.ROI = new Rectangle(x, y, width, height);
+            imgOriginal.Draw(new Rectangle(x, y, width, height), new Bgr(Color.Aquamarine), 2);
+            return img;
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
