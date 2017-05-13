@@ -33,3 +33,12 @@ C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\bin\Debug\AForge.Video.Kine
 C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\bin\Debug\AForge.Video.VFW.xml
 C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\bin\Debug\AForge.Video.Ximea.xml
 C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\bin\Debug\AForge.Vision.xml
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.exe
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.pdb
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\bin\Debug\EyeTrackerProject.exe
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\bin\Debug\EyeTrackerProject.pdb
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.Form1.resources
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.Properties.Resources.resources
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.csproj.GenerateResource.Cache
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.MainFormControl.resources
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.csprojResolveAssemblyReference.cache

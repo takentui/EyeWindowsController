@@ -81,7 +81,7 @@ namespace EyeTrackerProject
             int height = Img.Height;
             int S = (int)(width / 8);
             int s2 = S / 2;
-            double t = 0.07;
+            double t = 0.08;
             Int32[] integral_image;
             Int32 sum = 0;
             int count = 0;

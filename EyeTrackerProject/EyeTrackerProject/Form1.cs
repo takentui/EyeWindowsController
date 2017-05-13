@@ -21,47 +21,55 @@ namespace EyeTrackerProject
         //Declararation of all variables, vectors and haarcascades
         Image<Bgr, Byte> currentFrame;
         Capture grabber;
-        HaarCascade face;
         HaarCascade eye;
         public static UInt32[,] pixel;
         MCvFont font = new MCvFont(FONT.CV_FONT_HERSHEY_TRIPLEX, 0.5d, 0.5d);
-        Image<Gray, byte> result, TrainedFace = null;
+        Image<Gray, byte> result = null;
         Image<Gray, byte> gray = null;
         List<Image<Gray, byte>> trainingImages = new List<Image<Gray, byte>>();
         List<string> labels = new List<string>();
-        List<string> NamePersons = new List<string>();
-        int ContTrain, NumLabels, t;
-        string name, names = null;
-
-
+        List<PictureBox> pictures = new List<System.Windows.Forms.PictureBox>();
+        MathModule coords;
+        MainFormControl owner_form;
+        IntPtr corners;
         public Form1()
         {
             InitializeComponent();
-            //Load haarcascades for face detection
-            //face = new HaarCascade("haarcascade_frontalface_default.xml");
+            //Создадим картинки для передачи изображения
+            for (int i = 0; i < 8; i++)
+            {
+                int y = (int)(i / 4);
+                pictures.Add(new System.Windows.Forms.PictureBox());
+                pictures[i].Location = new System.Drawing.Point(10 + (i % 4) * 110, 30 + y * 100);
+                pictures[i].Name = "pictureBox" + i.ToString();
+                pictures[i].Size = new System.Drawing.Size(100, 100);
+                pictures[i].TabIndex = 10;
+                pictures[i].TabStop = false;
+                this.Controls.Add(pictures[i]);
+            }
+            coords = new MathModule(SystemInformation.PrimaryMonitorSize.Width / 100, SystemInformation.PrimaryMonitorSize.Height / 100);
+            //Каскад хаара
             eye = new HaarCascade("haarcascade_mcs_eyepair_big.xml");
-            //Initialize the capture device
+            //Камера
             grabber = new Capture();
             grabber.QueryFrame();
-            //Initialize the FrameGraber event
+            //Подписка на событие
             Application.Idle += new EventHandler(FrameGrabber);
         }
        
 
         void FrameGrabber(object sender, EventArgs e)
         {
-            //label4.Text = "";
-            NamePersons.Add("");
             Invert filterInvert = new Invert();
 
             IFilter filterGrayscale = Grayscale.CommonAlgorithms.RMY;
-            Threshold th = new Threshold(225);
+            Threshold th = new Threshold(240);
             BlobCounter bl;
             
             ExtractBiggestBlob fil2;
             
             //Get the current frame form capture device
-            currentFrame = grabber.QueryFrame().Resize(800, 600, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            currentFrame = grabber.QueryFrame().Resize(640, 480, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
 
             //Convert it to Grayscale
             gray = currentFrame.Convert<Gray, Byte>();
@@ -78,30 +86,31 @@ namespace EyeTrackerProject
             int width = 0, height = 0;
             int kek = 0;
             UInt32 point = new UInt32();
+            int t = 0;
             foreach (MCvAvgComp f in facesDetected[0])
             {
                 t = t + 1;
                 result = currentFrame.Copy(f.rect).Convert<Gray, byte>().Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
                 //draw the face detected in the 0th (gray) channel with blue color
-                width = f.rect.Width / 2 - 5;
-                height = f.rect.Height - 5;
+                width = f.rect.Width / 2;
+                height = f.rect.Height;
                 //width = f.rect.Width;
                 //height = f.rect.Height;
                 test[0] = new Bitmap(width, height);
                 test[1] = new Bitmap(width, height);
                 for (var i = 0; i < width; i++)
                 {
-                    for (var j = 0; j < height ; j++)
+                    for (var j = 0; j < height; j++)
                     {
                         test[0].SetPixel(i, j, currentFrame.Bitmap.GetPixel(f.rect.X + i, f.rect.Y + j));
                     }
                 }
                 for (var i = 0; i < width; i++)
                 {
-                    for (var j = 3; j < height; j++)
+                    for (var j = 0; j < height; j++)
                     {
 
-                        test[1].SetPixel(i, j, currentFrame.Bitmap.GetPixel(f.rect.X + width / 2 + i, f.rect.Y + j));
+                        test[1].SetPixel(i, j, currentFrame.Bitmap.GetPixel(f.rect.X + width + i, f.rect.Y + j));
                     }
                 }
                 currentFrame.Draw(f.rect, new Bgr(Color.Red), 2);
@@ -120,95 +129,92 @@ namespace EyeTrackerProject
             {
                 //filter.ApplyInPlace(test[0]);
                 //filter.ApplyInPlace(test[1]);
-                first_eye.Image = BrightnessContrast.Bradley_threshold(test[0]);
+                //first_eye.Image = BrightnessContrast.Bradley_threshold(test[0]);
+                //sec_eye.Image = BrightnessContrast.Bradley_threshold(test[1]);
             }
             catch (Exception ex)
             {
             }
-            if (test[0] != null)
+            int x_l, y_l, x_r = 0, y_r = 0;
+            for (var index = 0; index < test.Length; index++)
             {
-                //test[0] = BrightnessContrast.InvertImageColorMatrix(test[0]);
-                //test[0] = BrightnessContrast.HistogramEqualization(test[0]);
-                eye1.Image = test[0];
-                System.Drawing.Bitmap kek123 = test[0].Clone(new Rectangle(0, 0, width, height), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-                kek123 = filterInvert.Apply((Bitmap)kek123);
-                AForge.Imaging.Image.FormatImage(ref kek123);
-                eye2.Image = kek123;
-                kek123 = filterGrayscale.Apply(kek123); // ДОБАВИМ ПОИСК КРУГА
-                first_eye.Image = kek123;
-
-                kek123 = BrightnessContrast.HistogramEqualization(kek123);
-                kek123 = th.Apply(kek123);
-                
-                // РИСУЕМ КРУГИ
-                Image<Bgr, Byte> imgOriginal = new Image<Bgr, byte>(kek123);
-                Image<Gray, Byte> imgProcessed = (new Image<Gray, Byte>(kek123));
-
-                //imgProcessed = imgOriginal.InRange(new Bgr(0, 0, 175), new Bgr(100, 100, 256));
-
-                imgProcessed = imgProcessed.SmoothGaussian(9);
-
-                CircleF[] circles = imgProcessed.HoughCircles(new Gray(40), new Gray(20), 2, imgProcessed.Height / 4, 2, 40)[0];
-
-                foreach (CircleF circle in circles)
+                if (test[index] != null)
                 {
+                    pictures[index * 4].Image = test[index];
+                    //test[0] = BrightnessContrast.InvertImageColorMatrix(test[0]);
+                    //test[0] = BrightnessContrast.HistogramEqualization(test[0]);
+                    //eye1.Image = test[index];
+                    System.Drawing.Bitmap kek123 = test[index].Clone(new Rectangle(0, 0, width, height), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                    kek123 = filterInvert.Apply((Bitmap)kek123);
+                    AForge.Imaging.Image.FormatImage(ref kek123);
+                    pictures[index * 4 + 1].Image = kek123; // Принт изображения
+                    kek123 = filterGrayscale.Apply(kek123); // Наложим грейскейл
+                    pictures[index * 4 + 2].Image = kek123; // Принт изображения
+                    kek123 = BrightnessContrast.Bradley_threshold(kek123);
+                    //kek123 = th.Apply(kek123);
 
-                    if (textBox1.Text != "") textBox1.AppendText(Environment.NewLine);
-                    textBox1.AppendText("x =" + circle.Center.X.ToString().PadLeft(4) + ", y =" + circle.Center.Y.ToString().PadLeft(4) + ", radius =" + circle.Radius.ToString("###.000").PadLeft(7));
-                    textBox1.ScrollToCaret();
+                    // РИСУЕМ КРУГИ
+                    Image<Bgr, Byte> imgOriginal = new Image<Bgr, byte>(kek123);
+                    Image<Gray, Byte> imgProcessed = (new Image<Gray, Byte>(kek123));
 
-                    CvInvoke.cvCircle(imgOriginal, new System.Drawing.Point((int)circle.Center.X, (int)circle.Center.Y), 3, new MCvScalar(0, 255, 0), -1, LINE_TYPE.CV_AA, 0);
+                    //imgProcessed = imgOriginal.InRange(new Bgr(0, 0, 175), new Bgr(100, 100, 256));
 
-                    imgOriginal.Draw(circle, new Bgr(Color.Red), 3);
+                    //imgProcessed = imgProcessed.SmoothGaussian(25);
+
+                    CircleF[] circles = imgProcessed.HoughCircles(new Gray(70), new Gray(20), 1.5, imgProcessed.Height / 2, 1, 10)[0];
+
+                    foreach (CircleF circle in circles)
+                    {
+                        CvInvoke.cvCircle(imgOriginal, new System.Drawing.Point((int)circle.Center.X, (int)circle.Center.Y), 3, new MCvScalar(0, 255, 0), -1, LINE_TYPE.CV_AA, 0);
+                        if (index == 0)
+                        {
+                            x_r = (int)circle.Center.X;
+                            y_r = (int)circle.Center.Y;
+                        }
+                        else
+                        {
+                            x_l = (int)circle.Center.X;
+                            y_l = (int)circle.Center.Y;
+                            coords.addPoint(x_l, y_l, x_r, y_r);
+                        }
+
+
+                        imgOriginal.Draw(circle, new Bgr(Color.Red), 2);
+
+                        if (textBox1.Text != "") textBox1.AppendText(Environment.NewLine);
+                        textBox1.AppendText("x =" + coords.getX() + ", y =" + coords.getY());
+                        textBox1.ScrollToCaret();
+
+                    }
+                    try
+                    {
+                        int cornerCount = 1;
+                        CvInvoke.cvGoodFeaturesToTrack(imgOriginal, imgProcessed, imgProcessed, corners, ref cornerCount, 0.5, imgOriginal.Width, new IntPtr(), 3, 0, 0.04);
+                        textBox1.AppendText("угол _ x =" + corners.ToString());
+                        owner_form.setMouseCoordinates(coords.getX(), coords.getY());
+                        owner_form.left_eye.Image = imgOriginal.ToBitmap();
+                    }
+                    catch (Exception except)
+                    {
+                        owner_form.logger_tb.Text = except.Message;
+                    }
+                    pictures[index * 4 + 3].Image = imgOriginal.ToBitmap();// Принт изображения
+                    
+
                 }
-                sec_eye.Image = imgOriginal.ToBitmap();
-                // 
-                //ПОПРОБОВАТЬ поиграть с радиусом, если радиус малый то смотрим вниз
-                //ПОРА переносить на проект
-
-
-                //test[0] = BrightnessContrast.HistogramEqualization(kek123);
-                //kek123 = th.Apply(kek123);
-                //sec_eye.Image = kek123;
-                ////TODO POISK KRYGA I ZRACHKA
-                //bl = new BlobCounter(kek123);
-                //int i = bl.ObjectsCount;
-                //fil2 = new ExtractBiggestBlob();
-                //try
-                //{
-                //    fil2.Apply(kek123);
-                //    int x = 0;
-                //    int y = 0;
-                //    int h = 0;
-                //    if (i > 0)
-                //    {
-                //        fil2.Apply(kek123);
-                //        x = fil2.BlobPosition.X;
-                //        y = fil2.BlobPosition.Y;
-                //        h = fil2.Apply(kek123).Height;
-                //        test[0] = kek123.Clone(new Rectangle(0, 0, width, height), System.Drawing.Imaging.PixelFormat.Format16bppArgb1555);
-                //        test[0].SetPixel(x + height / 2, y + height / 2, Color.Red);
-                //        test[0] = BrightnessContrast.Bradley_threshold(test[0]);
-                //        sec_eye.Image = test[0];
-                //        label1.Text = " x = " + (x + height / 2).ToString() + ", y = " + (y + height / 2).ToString() + ", h = " + h.ToString();
-                //    }
-                //}
-                //catch (Exception exc) { }
-                //test[0] = BrightnessContrast.Bradley_threshold(test[0]);
-                //first_eye.Image = test[0];
-                //Image<Bgr, Byte> keka = BrightnessContrast.ShowCircles(new Image<Gray, Byte>(test[0]));
-
-                //sec_eye.Image = (Bitmap)keka.Bitmap.Clone();
             }
-            //Clear the list(vector) of names
-            NamePersons.Clear();
-
         }
         
 
         private void button1_Click(object sender, EventArgs e)
         {
             FrameGrabber(sender, e);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            owner_form = (MainFormControl)this.Owner as MainFormControl;
+
         }
 
     }
