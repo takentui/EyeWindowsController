@@ -1,6 +1,6 @@
 C:\PROGRAMMER\c#\EyeWindowsController\EyeWindowsController\bin\Release\EyeWindowsController.exe
 C:\PROGRAMMER\c#\EyeWindowsController\EyeWindowsController\bin\Release\EyeWindowsController.pdb
-C:\PROGRAMMER\c#\EyeWindowsController\EyeWindowsController\obj\x86\Release\EyeWindowsController.Form1.resources
+C:\PROGRAMMER\c#\EyeWindowsController\EyeWindowsController\obj\x86\Release\EyeWindowsController.EyeVisionController.resources
 C:\PROGRAMMER\c#\EyeWindowsController\EyeWindowsController\obj\x86\Release\EyeWindowsController.Properties.Resources.resources
 C:\PROGRAMMER\c#\EyeWindowsController\EyeWindowsController\obj\x86\Release\EyeWindowsController.csproj.GenerateResource.Cache
 C:\PROGRAMMER\c#\EyeWindowsController\EyeWindowsController\obj\x86\Release\EyeWindowsController.exe
@@ -10,7 +10,7 @@ C:\PROGRAMMER\c#\SVN\EyeWindowsControllerwc\EyeWindowsController\bin\Release\Eye
 C:\PROGRAMMER\c#\SVN\EyeWindowsControllerwc\EyeWindowsController\bin\Release\EyeWindowsController.pdb
 C:\PROGRAMMER\c#\SVN\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Release\EyeWindowsController.csprojResolveAssemblyReference.cache
 C:\PROGRAMMER\c#\SVN\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Release\EyeWindowsController.CustomCursorForm.resources
-C:\PROGRAMMER\c#\SVN\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Release\EyeWindowsController.Form1.resources
+C:\PROGRAMMER\c#\SVN\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Release\EyeWindowsController.EyeVisionController.resources
 C:\PROGRAMMER\c#\SVN\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Release\EyeWindowsController.Properties.Resources.resources
 C:\PROGRAMMER\c#\SVN\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Release\EyeWindowsController.csproj.GenerateResource.Cache
 C:\PROGRAMMER\c#\SVN\EyeWindowsControllerwc\EyeWindowsController\obj\x86\Release\EyeWindowsController.exe

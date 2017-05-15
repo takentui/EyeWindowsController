@@ -9,7 +9,7 @@ C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\bin\Debug\GazeTrackingLibra
 C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\bin\Debug\GTCommons.pdb
 C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\bin\Debug\UC480Cam.pdb
 C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.csprojResolveAssemblyReference.cache
-C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.Form1.resources
+C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.EyeVisionController.resources
 C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.Properties.Resources.resources
 C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.csproj.GenerateResource.Cache
 C:\PROGRAMMER\c#\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.exe
@@ -37,7 +37,7 @@ C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\ob
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.pdb
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\bin\Debug\EyeTrackerProject.exe
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\bin\Debug\EyeTrackerProject.pdb
-C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.Form1.resources
+C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.EyeVisionController.resources
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.Properties.Resources.resources
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.csproj.GenerateResource.Cache
 C:\PROGRAMMER\c#\GIT\EyeWindowsController\EyeTrackerProject\EyeTrackerProject\obj\x86\Debug\EyeTrackerProject.MainFormControl.resources

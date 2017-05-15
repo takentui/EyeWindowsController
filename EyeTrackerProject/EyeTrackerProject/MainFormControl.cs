@@ -23,7 +23,7 @@ namespace EyeTrackerProject
         public string MOUSEEVENTACTION = "LeftClick";
         ControlPanelForm _controlsForm;
         bool ActionIsEnd; //Действие совершено
-        Form1 VCForm;
+        EyeVisionController VCForm;
         public MainFormControl()
         {
             TopMost = true;
@@ -40,7 +40,7 @@ namespace EyeTrackerProject
             InitializeComponent();
             mouse_form = new CustomCursorForm();
             mouse_form.Owner = this;
-            VCForm = new Form1();
+            VCForm = new EyeVisionController();
             VCForm.Owner = this;
             VCForm.Show();
             // mouse_form.Show();

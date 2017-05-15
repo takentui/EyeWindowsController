@@ -223,11 +223,11 @@
       <DependentUpon>CustomCursorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomMouse.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="EyeVisionController.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="EyeVisionController.Designer.cs">
+      <DependentUpon>EyeVisionController.cs</DependentUpon>
     </Compile>
     <Compile Include="MainFormControl.cs">
       <SubType>Form</SubType>
@@ -239,8 +239,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserActivityHook.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="EyeVisionController.resx">
+      <DependentUpon>EyeVisionController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFormControl.resx">
       <DependentUpon>MainFormControl.cs</DependentUpon>

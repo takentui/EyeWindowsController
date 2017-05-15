@@ -16,7 +16,7 @@ using System.Diagnostics;
 
 namespace EyeTrackerProject
 {
-    public partial class Form1 : Form
+    public partial class EyeVisionController : Form
     {
         //Declararation of all variables, vectors and haarcascades
         Image<Bgr, Byte> currentFrame;
@@ -32,7 +32,7 @@ namespace EyeTrackerProject
         MathModule coords;
         MainFormControl owner_form;
         PointF[][] corners;
-        public Form1()
+        public EyeVisionController()
         {
             InitializeComponent();
             //Создадим картинки для передачи изображения
@@ -238,7 +238,7 @@ namespace EyeTrackerProject
             FrameGrabber(sender, e);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void EyeVisionController_Load(object sender, EventArgs e)
         {
             owner_form = (MainFormControl)this.Owner as MainFormControl;
 

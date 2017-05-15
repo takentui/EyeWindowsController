@@ -1,6 +1,6 @@
 ﻿namespace EyeTrackerProject
 {
-    partial class Form1
+    partial class EyeVisionController
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -80,7 +80,7 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Логи координат";
             // 
-            // Form1
+            // EyeVisionController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -90,9 +90,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.imageBoxFrameGrabber);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "EyeVisionController";
+            this.Text = "EyeVisionController";
+            this.Load += new System.EventHandler(this.EyeVisionController_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
