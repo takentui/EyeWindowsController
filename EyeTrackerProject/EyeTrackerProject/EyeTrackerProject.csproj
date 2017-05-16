@@ -133,10 +133,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\AForge.Vision.dll</HintPath>
     </Reference>
-    <Reference Include="AvalonControlsLibrary, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\AvalonControlsLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="DirectShowLib-2005, Version=2.0.0.0, Culture=neutral, PublicKeyToken=67e7b740cdfc2d3f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\DirectShowLib-2005.dll</HintPath>
@@ -165,30 +161,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Emgu.Util.dll</HintPath>
     </Reference>
-    <Reference Include="GazeGUI, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\GazeGUI.dll</HintPath>
-    </Reference>
-    <Reference Include="GazeGUIVelocity, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\GazeGUIVelocity.dll</HintPath>
-    </Reference>
-    <Reference Include="GazeTrackerClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=d2bdf8683767e608, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\GazeTrackerClient.dll</HintPath>
-    </Reference>
-    <Reference Include="GazeTrackingLibrary, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\GazeTrackingLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="GTCommons, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\GTCommons.dll</HintPath>
-    </Reference>
-    <Reference Include="SilverlightContrib.Controls, Version=2009.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\SilverlightContrib.Controls.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -202,10 +174,6 @@
     <Reference Include="UC480Cam, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\UC480Cam.dll</HintPath>
-    </Reference>
-    <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\ZedGraph.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +223,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -63,7 +63,7 @@ namespace EyeTrackerProject
             Invert filterInvert = new Invert();
 
             IFilter filterGrayscale = Grayscale.CommonAlgorithms.RMY;
-            Threshold th = new Threshold(240);
+            Threshold th = new Threshold(280);
             BlobCounter bl;
             
             ExtractBiggestBlob fil2;
@@ -161,7 +161,7 @@ namespace EyeTrackerProject
                     imgProcessed = imgProcessed.SmoothGaussian(9);
                     //imgProcessed = imgProcessed.InRange(new Gray(0), new Gray(70));
 
-                    CircleF[] circles = imgProcessed.HoughCircles(new Gray(70), new Gray(20), 1.5, imgProcessed.Height, 3, 12)[0];
+                    CircleF[] circles = imgProcessed.HoughCircles(new Gray(60), new Gray(35), 1.6, imgProcessed.Height, 3, 12)[0];
                     foreach (CircleF circle in circles)
                     {
                         CvInvoke.cvCircle(imgOriginal, new System.Drawing.Point((int)circle.Center.X, (int)circle.Center.Y), 3, new MCvScalar(0, 255, 0), -1, LINE_TYPE.CV_AA, 0);
@@ -188,7 +188,7 @@ namespace EyeTrackerProject
                     try
                     {
                         int cornerCount = 2;
-                        corners = setCornerRoi(imgOriginal, index.Equals(0)).GoodFeaturesToTrack(3, 0.8, imgOriginal.Width, 3);
+                        corners = setCornerRoi(imgOriginal, index.Equals(0)).GoodFeaturesToTrack(1, 0.8, imgOriginal.Width, 3);
                         
                         if (index.Equals(0))
                         {
