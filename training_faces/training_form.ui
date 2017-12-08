@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="block_1" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>960</width>
+      <height>540</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>960</width>
+      <height>540</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>70</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid rgb(0, 0, 0); background:rgb(244, 254, 255)</string>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>961</width>
+       <height>541</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>70</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>1</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="block_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>0</y>
+      <width>960</width>
+      <height>540</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>960</width>
+      <height>540</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>70</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid rgb(0, 0, 0); background:rgb(244, 254, 255)</string>
+    </property>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>961</width>
+       <height>541</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>70</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>2</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="block_4" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>540</y>
+      <width>960</width>
+      <height>540</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>960</width>
+      <height>540</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>70</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid rgb(0, 0, 0); background:rgb(244, 254, 255)</string>
+    </property>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>961</width>
+       <height>541</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>70</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>3</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="block_3" native="true">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>540</y>
+      <width>960</width>
+      <height>540</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>960</width>
+      <height>540</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>70</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid rgb(0, 0, 0); background:rgb(244, 254, 255)</string>
+    </property>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>961</width>
+       <height>541</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>70</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>4</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
