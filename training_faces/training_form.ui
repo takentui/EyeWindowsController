@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
-    <height>1080</height>
+    <width>798</width>
+    <height>620</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,14 +19,14 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>960</width>
-      <height>540</height>
+      <width>267</width>
+      <height>201</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>960</width>
-      <height>540</height>
+      <width>267</width>
+      <height>200</height>
      </size>
     </property>
     <property name="font">
@@ -45,8 +45,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>961</width>
-       <height>541</height>
+       <width>271</width>
+       <height>201</height>
       </rect>
      </property>
      <property name="font">
@@ -68,16 +68,16 @@
    <widget class="QWidget" name="block_2" native="true">
     <property name="geometry">
      <rect>
-      <x>960</x>
+      <x>268</x>
       <y>0</y>
-      <width>960</width>
-      <height>540</height>
+      <width>266</width>
+      <height>200</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>960</width>
-      <height>540</height>
+      <width>266</width>
+      <height>200</height>
      </size>
     </property>
     <property name="font">
@@ -96,8 +96,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>961</width>
-       <height>541</height>
+       <width>266</width>
+       <height>201</height>
       </rect>
      </property>
      <property name="font">
@@ -113,19 +113,19 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="block_4" native="true">
+   <widget class="QWidget" name="block_3" native="true">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>540</y>
-      <width>960</width>
-      <height>540</height>
+      <x>532</x>
+      <y>0</y>
+      <width>266</width>
+      <height>200</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>960</width>
-      <height>540</height>
+      <width>266</width>
+      <height>200</height>
      </size>
     </property>
     <property name="font">
@@ -139,13 +139,157 @@
     <property name="styleSheet">
      <string notr="true">border: 1px solid rgb(0, 0, 0); background:rgb(244, 254, 255)</string>
     </property>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>961</width>
-       <height>541</height>
+       <width>266</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>70</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>3</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="block_5" native="true">
+    <property name="geometry">
+     <rect>
+      <x>268</x>
+      <y>200</y>
+      <width>266</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>266</width>
+      <height>200</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>70</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid rgb(0, 0, 0); background:rgb(244, 254, 255)</string>
+    </property>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>266</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>70</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>5</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="block_6" native="true">
+    <property name="geometry">
+     <rect>
+      <x>532</x>
+      <y>200</y>
+      <width>266</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>266</width>
+      <height>200</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>70</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid rgb(0, 0, 0); background:rgb(244, 254, 255)</string>
+    </property>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>266</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>70</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>6</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="block_4" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>200</y>
+      <width>269</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>266</width>
+      <height>200</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>70</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid rgb(0, 0, 0); background:rgb(244, 254, 255)</string>
+    </property>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>269</width>
+       <height>201</height>
       </rect>
      </property>
      <property name="font">
@@ -157,26 +301,26 @@
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>3</string>
+      <string>4</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="block_3" native="true">
+   <widget class="QWidget" name="block_9" native="true">
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>540</y>
-      <width>960</width>
-      <height>540</height>
+      <x>532</x>
+      <y>400</y>
+      <width>266</width>
+      <height>200</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>960</width>
-      <height>540</height>
+      <width>266</width>
+      <height>200</height>
      </size>
     </property>
     <property name="font">
@@ -190,13 +334,13 @@
     <property name="styleSheet">
      <string notr="true">border: 1px solid rgb(0, 0, 0); background:rgb(244, 254, 255)</string>
     </property>
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="label_9">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>961</width>
-       <height>541</height>
+       <width>266</width>
+       <height>200</height>
       </rect>
      </property>
      <property name="font">
@@ -205,13 +349,123 @@
       </font>
      </property>
      <property name="text">
-      <string>4</string>
+      <string>9</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
+   <widget class="QWidget" name="block_7" native="true">
+    <property name="geometry">
+     <rect>
+      <x>1</x>
+      <y>400</y>
+      <width>269</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>266</width>
+      <height>200</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>70</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid rgb(0, 0, 0); background:rgb(244, 254, 255)</string>
+    </property>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>269</width>
+       <height>200</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>70</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>7</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="block_8" native="true">
+    <property name="geometry">
+     <rect>
+      <x>268</x>
+      <y>400</y>
+      <width>265</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>265</width>
+      <height>200</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>70</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid rgb(0, 0, 0); background:rgb(244, 254, 255)</string>
+    </property>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>265</width>
+       <height>200</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>70</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>8</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <zorder>block_1</zorder>
+   <zorder>block_2</zorder>
+   <zorder>block_3</zorder>
+   <zorder>label_5</zorder>
+   <zorder>label_7</zorder>
+   <zorder>block_5</zorder>
+   <zorder>block_6</zorder>
+   <zorder>block_4</zorder>
+   <zorder>block_9</zorder>
+   <zorder>block_7</zorder>
+   <zorder>block_8</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

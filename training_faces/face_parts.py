@@ -97,9 +97,9 @@ class Eyes (Part):
         # Поиск зрачков
         rows, cols = frame.shape
         # frame = cv2.medianBlur(frame,5)
-        frame = cv2.adaptiveThreshold(frame,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,11,1)
-        circles = cv2.HoughCircles(frame, cv2.HOUGH_GRADIENT, 2, 7, cols / 3,
-                                   param1=30, param2=18, minRadius=0, maxRadius=0)
+        frame = cv2.adaptiveThreshold(frame,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,11,2)
+        circles = cv2.HoughCircles(frame, cv2.HOUGH_GRADIENT, 1.7, 3, cols/3,
+                            param1=30,param2=30,minRadius=5,maxRadius=15)
         print("circles = {0}".format(circles))
         if not circles is None:
             circles = np.uint16(np.around(circles))

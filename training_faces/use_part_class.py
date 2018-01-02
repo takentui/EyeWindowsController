@@ -165,45 +165,49 @@ def detect (frame):
 #     cv2.imshow('grid', grid)
 #     cv2.imshow('capture', screen)
 
-BLOCKS_COUNT = 4
-data = []
-for i in range(BLOCKS_COUNT):
-    block_index = i + 1
-    w, h = 640, 480
-    grid = np.zeros((h, w, 1), np.uint8);
-    block_data = []
-    block_dir = os.walk('{0}'.format(block_index))
-    for d, dirs, files in block_dir:
-        # Пройдем по всем папкам
-        for f in files:
-            img = cv2.imread('{0}/{1}'.format(block_index, f))
-            ((x, y), screen) = detect(img)
-            w, h = 640, 480
-            grid = np.zeros((h, w, 1), np.uint8);
-            w3 = int(w / 3)
-            h3 = int(h / 3)
-            cv2.rectangle(grid, (0, h3), (w - 1, 2 * h3), 255)
-            cv2.rectangle(grid, (w3, 0), (2 * w3, h - 1), 255)
-            nx = int(x / w3)
-            ny = int(y / h3)
-            if lost:
-                print(-1, -1)
-            else:
-                print("x={0}, y={1}".format(x, y))
 
-            sys.stdout.flush()
-            # if silent:
-            #     continue
-            # Highlight selected
-            cv2.rectangle(grid, (nx * w3, ny * h3), ((nx + 1) * w3, (ny + 1) * h3), 127, cv2.FILLED)
-            # Draw cursor
-            cv2.rectangle(grid, (x - 4, y - 4), (x + 4, y + 4), 0)
-            cv2.rectangle(grid, (x - 2, y - 2), (x + 2, y + 2), 0, cv2.FILLED)
-            plt.imshow(screen)
-            # Highlight selected
-            cv2.rectangle(grid, (nx * w3, ny * h3), ((nx + 1) * w3, (ny + 1) * h3), 127, cv2.FILLED)
-            # Draw cursor
-            cv2.rectangle(grid, (x - 4, y - 4), (x + 4, y + 4), 0)
-            cv2.rectangle(grid, (x - 2, y - 2), (x + 2, y + 2), 0, cv2.FILLED)
-            cv2.imshow('grid', grid)
-            plt.show()
+
+if __name__ == '__main__':
+
+    BLOCKS_COUNT = 9
+    data = []
+    for i in range(BLOCKS_COUNT):
+        block_index = i + 1
+        w, h = 640, 480
+        grid = np.zeros((h, w, 1), np.uint8);
+        block_data = []
+        block_dir = os.walk('{0}'.format(block_index))
+        for d, dirs, files in block_dir:
+            # Пройдем по всем папкам
+            for f in files:
+                img = cv2.imread('{0}/{1}'.format(block_index, f))
+                ((x, y), screen) = detect(img)
+                w, h = 640, 480
+                grid = np.zeros((h, w, 1), np.uint8);
+                w3 = int(w / 3)
+                h3 = int(h / 3)
+                cv2.rectangle(grid, (0, h3), (w - 1, 2 * h3), 255)
+                cv2.rectangle(grid, (w3, 0), (2 * w3, h - 1), 255)
+                nx = int(x / w3)
+                ny = int(y / h3)
+                if lost:
+                    print(-1, -1)
+                else:
+                    print("x={0}, y={1}".format(x, y))
+
+                sys.stdout.flush()
+                # if silent:
+                #     continue
+                # Highlight selected
+                cv2.rectangle(grid, (nx * w3, ny * h3), ((nx + 1) * w3, (ny + 1) * h3), 127, cv2.FILLED)
+                # Draw cursor
+                cv2.rectangle(grid, (x - 4, y - 4), (x + 4, y + 4), 0)
+                cv2.rectangle(grid, (x - 2, y - 2), (x + 2, y + 2), 0, cv2.FILLED)
+                plt.imshow(screen)
+                # Highlight selected
+                cv2.rectangle(grid, (nx * w3, ny * h3), ((nx + 1) * w3, (ny + 1) * h3), 127, cv2.FILLED)
+                # Draw cursor
+                cv2.rectangle(grid, (x - 4, y - 4), (x + 4, y + 4), 0)
+                cv2.rectangle(grid, (x - 2, y - 2), (x + 2, y + 2), 0, cv2.FILLED)
+                cv2.imshow('grid', grid)
+                plt.show()
