@@ -11,11 +11,36 @@ import queue
 import use_part_class as Detector
 from ui_test_cv_cam import Ui_CamForm
 
+from ui_training_form import Ui_MainWindow as UI_TrainingForm
+
+BLOCKS_COUNT = 4
+
 running = False
 capture_thread = None
 q = queue.Queue()
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt3.xml')
-eye_cascade = cv2.CascadeClassifier('haarcascade_mcs_eyepair_big.xml')
+
+
+
+class TrainingForm(QtWidgets.QDialog):
+    # Основной класс для сохранения фото
+    def __init__(self, parent=None):
+        super(TrainingForm, self).__init__(parent)
+
+        self.ui = UI_TrainingForm()
+        self.ui.setupUi(self)
+        # self.blocks = [self.ui.block_1, self.ui.block_2, self.ui.block_3, self.ui.block_4]
+        # self.timer = QtWidgets.QTimer(self)
+        #
+        # self.timer.timeout.connect(self.timer_tick)
+        # self.timer.start(1500)
+        # cameraDevice = QByteArray()
+        # self.cam = cv2.VideoCapture(0)
+        self.img_number = 1
+
+    def print_block(self, number):
+        """ Подсветка блока"""
+        block = self.ui["block_{0}".format(number)]
+        block.setStyleSheet("border: 1px solid rgb(0, 0, 0); background: #aaffd8;")
 
 
 def grab(cam, queue, width, height, fps):
@@ -63,10 +88,23 @@ class MyWindowClass(QtWidgets.QMainWindow, Ui_CamForm):
         self.setupUi(self)
 
         self.startButton.clicked.connect(self.start_clicked)
+        self.window_width = 800
+        self.window_height = 600
 
-        self.window_width = self.ImgWidget.frameSize().width()
-        self.window_height = self.ImgWidget.frameSize().height()
-        self.ImgWidget = OwnImageWidget(self.ImgWidget)
+        # Подписка на настройки
+        # Центровка рта
+        self.mvcc = 0.3
+        # Главный коэффициент поворота головы
+        self.k = 0.5
+        # X коррекция
+        self.mxc = 0.05
+        # Y коррекция
+        self.myc = 0.035
+        self.mvcc_slider.valueChanged.connect(self.update_mvcc)
+        self.mxc_slider.valueChanged.connect(self.update_mxc)
+        self.myc_slider.valueChanged.connect(self.update_myc)
+        self.mkc_slider.valueChanged.connect(self.update_mkc)
+
 
         self.timer = QtCore.QTimer(self)
         self.timer.timeout.connect(self.update_frame)
@@ -78,6 +116,19 @@ class MyWindowClass(QtWidgets.QMainWindow, Ui_CamForm):
         capture_thread.start()
         self.startButton.setEnabled(False)
         self.startButton.setText('Запуск...')
+
+    def update_mvcc(self, value):
+        self.mvcc = int(value) / 100
+
+    def update_mxc(self, value):
+        self.mxc = int(value) / 1000
+
+    def update_myc(self, value):
+        self.myc = int(value) / 1000
+
+    def update_mkc(self, value):
+        self.k = int(value) / 100
+
 
     def update_frame(self):
         if not q.empty():
@@ -100,13 +151,41 @@ class MyWindowClass(QtWidgets.QMainWindow, Ui_CamForm):
             height, width, bpc = img.shape
             bpl = 3 * width
 
-            ((x, y), screen) = Detector.detect(img)
+            ((x, y), screen) = Detector.detect(img, self.mvcc, self.k, self.mxc, self.myc)
             # image = QtGui.QPixmap.fromImage(screen)
             # image = QtGui.QImage(screen.data, width, height, bpl, QtGui.QImage.Format_RGB888)
             # self.ImgWidget.setImage(image)
+            self.settings.setText("mxc = {0}, myc = {1}, mvcc = {2}, k = {3}".format(self.mxc, self.myc, self.mvcc, self.k))
             self.coords.setText("x = {0}, y = {1}".format(x, y))
             cv2.imshow('Фиксация лица', screen)
+            self.show_grid(x, y)
             # self.ImgWidget.setPixmap(image)
+
+    def show_grid(self, x, y):
+        """ Отображение сетки"""
+        w, h = 640, 480
+        grid = np.zeros((h, w, 1), np.uint8);
+        w3 = int(w / 3)
+        h3 = int(h / 3)
+        cv2.rectangle(grid, (0, h3), (w - 1, 2 * h3), 255)
+        cv2.rectangle(grid, (w3, 0), (2 * w3, h - 1), 255)
+        nx = int(x / w3)
+        ny = int(y / h3)
+
+        sys.stdout.flush()
+        # if silent:
+        #     continue
+        # Highlight selected
+        cv2.rectangle(grid, (nx * w3, ny * h3), ((nx + 1) * w3, (ny + 1) * h3), 127, cv2.FILLED)
+        # Draw cursor
+        cv2.rectangle(grid, (x - 4, y - 4), (x + 4, y + 4), 0)
+        cv2.rectangle(grid, (x - 2, y - 2), (x + 2, y + 2), 0, cv2.FILLED)
+        # Highlight selected
+        cv2.rectangle(grid, (nx * w3, ny * h3), ((nx + 1) * w3, (ny + 1) * h3), 127, cv2.FILLED)
+        # Draw cursor
+        cv2.rectangle(grid, (x - 4, y - 4), (x + 4, y + 4), 0)
+        cv2.rectangle(grid, (x - 2, y - 2), (x + 2, y + 2), 0, cv2.FILLED)
+        cv2.imshow('grid', grid)
 
     def closeEvent(self, event):
         global running
@@ -114,9 +193,13 @@ class MyWindowClass(QtWidgets.QMainWindow, Ui_CamForm):
 
 
 capture_thread = threading.Thread(target=grab, args=(0, q, 1920, 1080, 20))
-
 app = QtWidgets.QApplication(sys.argv)
 w = MyWindowClass(None)
 w.setWindowTitle('Контроллер взгляда')
 w.show()
+
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt3.xml')
+eye_cascade = cv2.CascadeClassifier('haarcascade_mcs_eyepair_big.xml')
+# form = TrainingForm()
+# form.show()
 app.exec_()

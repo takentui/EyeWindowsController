@@ -6,6 +6,7 @@ import numpy as np
 from face_parts import Face, Nose, Mouth, Eyes
 from threading import Thread
 from matplotlib import pyplot as plt
+
 from time import time
 path = "haar_cascades/"
 # Load Haar cascades
@@ -16,14 +17,6 @@ cmouth = Mouth(path, cface)
 # Preview scale
 scale = 2
 
-# Mouth vert. center correction
-mvcc = 0.3
-# Main triangle ratio
-k = 0.5
-# X correction
-mxc = 0.05
-# Y correction
-myc = 0.035
 # Head width history size
 memory = 100
 # Cursor history size
@@ -41,7 +34,7 @@ silent = False
 sneak = False
 if len(sys.argv) > 1:
     silent = True
-def detect (frame):
+def detect (frame, mvcc, k, mxc, myc):
     global last
     global lost
     size = (frame.shape[1], frame.shape[0])

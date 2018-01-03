@@ -172,10 +172,6 @@ class Ui_MainWindow(object):
         self.block_9.raise_()
         self.block_7.raise_()
         self.block_8.raise_()
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

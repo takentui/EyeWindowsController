@@ -136,11 +136,12 @@ class Eyes (Part):
         self.right = parts[1]
         self.eyes = [self.left, self.right]
         print("pupils = {0}, {1}".format(self.left_pup, self.right_pup))
-        self.last = [
-            ((self.left_pup[0] + self.right_pup[0]) + (self.left[0] + self.right[0])) / 2,
-            ((self.left_pup[1] + self.right_pup[1]) + (self.left[1] + self.right[1])) / 2
-        ]
-        self.remains = self.memory
+        if not self.left_pup is None and not self.right_pup is None:
+            self.last = [
+                ((self.left_pup[0] + self.right_pup[0]) + (self.left[0] + self.right[0])) / 2,
+                ((self.left_pup[1] + self.right_pup[1]) + (self.left[1] + self.right[1])) / 2
+            ]
+            self.remains = self.memory
         return self.last
     def highlight (self, frame, color=150):
         if self.remains:
@@ -148,12 +149,13 @@ class Eyes (Part):
             y = self.face.last[1]
             # eye = [self.left, self.right]
             i = 0
-            for (ex, ey, er) in [self.left_pup, self.right_pup]:
-                nx = int(x + ex + self.eyes[i][0])
-                ny = int(y + ey + self.eyes[i][1])
-                cv2.circle(frame, (nx, ny), er, color, 2)
-                i += 1
-                # cv2.rectangle(frame, (int(nx - 1), int(ny - 1)), (int(nx + 1), int(ny + 1)), color)
+            if not self.left_pup is None and not self.right_pup is None:
+                for (ex, ey, er) in [self.left_pup, self.right_pup]:
+                    nx = int(x + ex + self.eyes[i][0])
+                    ny = int(y + ey + self.eyes[i][1])
+                    cv2.circle(frame, (nx, ny), er, color, 2)
+                    i += 1
+                    # cv2.rectangle(frame, (int(nx - 1), int(ny - 1)), (int(nx + 1), int(ny + 1)), color)
             nx = x + self.last[0]
             ny = y + self.last[1]
             cv2.rectangle(frame, (int(nx - 1), int(ny - 1)), (int(nx + 1), int(ny + 1)), color)
