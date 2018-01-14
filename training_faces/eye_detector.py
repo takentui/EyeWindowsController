@@ -150,12 +150,14 @@ class MyWindowClass(QtWidgets.QMainWindow, Ui_CamForm):
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             height, width, bpc = img.shape
             bpl = 3 * width
-
+            tic = time.time()
             ((x, y), screen) = Detector.detect(img, self.mvcc, self.k, self.mxc, self.myc)
             # image = QtGui.QPixmap.fromImage(screen)
             # image = QtGui.QImage(screen.data, width, height, bpl, QtGui.QImage.Format_RGB888)
             # self.ImgWidget.setImage(image)
+            toc = time.time()
             self.settings.setText("mxc = {0}, myc = {1}, mvcc = {2}, k = {3}".format(self.mxc, self.myc, self.mvcc, self.k))
+            #self.coords.setText(" Вермя расчета {0}".format(toc - tic))
             self.coords.setText("x = {0}, y = {1}".format(x, y))
             cv2.imshow('Фиксация лица', screen)
             self.show_grid(x, y)
@@ -163,7 +165,7 @@ class MyWindowClass(QtWidgets.QMainWindow, Ui_CamForm):
 
     def show_grid(self, x, y):
         """ Отображение сетки"""
-        w, h = 640, 480
+        w, h = 1920, 1080
         grid = np.zeros((h, w, 1), np.uint8);
         w3 = int(w / 3)
         h3 = int(h / 3)
@@ -176,12 +178,7 @@ class MyWindowClass(QtWidgets.QMainWindow, Ui_CamForm):
         # if silent:
         #     continue
         # Highlight selected
-        cv2.rectangle(grid, (nx * w3, ny * h3), ((nx + 1) * w3, (ny + 1) * h3), 127, cv2.FILLED)
-        # Draw cursor
-        cv2.rectangle(grid, (x - 4, y - 4), (x + 4, y + 4), 0)
-        cv2.rectangle(grid, (x - 2, y - 2), (x + 2, y + 2), 0, cv2.FILLED)
-        # Highlight selected
-        cv2.rectangle(grid, (nx * w3, ny * h3), ((nx + 1) * w3, (ny + 1) * h3), 127, cv2.FILLED)
+        cv2.rectangle(grid, (nx * w3, ny * h3), ((nx + 1) * w3, (ny + 1) * h3), 100, cv2.FILLED)
         # Draw cursor
         cv2.rectangle(grid, (x - 4, y - 4), (x + 4, y + 4), 0)
         cv2.rectangle(grid, (x - 2, y - 2), (x + 2, y + 2), 0, cv2.FILLED)
